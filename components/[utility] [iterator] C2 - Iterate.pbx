@@ -1,9 +1,9 @@
 {
   "definitionVersion" : "1.0.0",
-  "name" : "Iterator",
+  "name" : "[utility] [iterator] C2 - Iterate",
   "type" : "Pipe",
-  "panX" : 20.0,
-  "panY" : 20.0,
+  "panX" : -15.0,
+  "panY" : -212.0,
   "logLevel" : "WARN",
   "description" : "",
   "jobList" : [ {
@@ -31,16 +31,6 @@
       "value" : "#App:18733:datastoreName!String"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "domain_type"
-      },
-      "value" : "Organization"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
-      },
-      "value" : "{\n    \"inputData\": \"#App:18743:find_replace.output!String\",\n\"outputData\": \"#Trigger:1871:outputData!String\",\n    \"context\": {},\n    \"counter\": #App:18664:newCount!String,\n    \"lock\": #App:18650:lock!String,\n    \"repeatTrigger\": \"#App:18650:repeatTrigger!String\"\n}"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "db_method"
       },
       "value" : "POST"
@@ -51,9 +41,19 @@
       "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "request_entity"
+      },
+      "value" : "{\n    \"inputData\": \"#App:18743:find_replace.output!String\",\n\"outputData\": \"#Trigger:1871:outputData!String\",\n    \"extraData\": \"#App:18650:extraData!String\",\n    \"counter\": #App:18664:newCount!String,\n    \"lock\": #App:18650:lock!String,\n    \"repeatTrigger\": \"#App:18650:repeatTrigger!String\"\n}"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "path"
       },
-      "value" : "#Trigger:1871:datastoreID!String"
+      "value" : "#Trigger:1871:componentDatastoreID!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "domain_type"
+      },
+      "value" : "Organization"
     } ],
     "locationLeft" : 470.0,
     "locationTop" : 610.0,
@@ -78,6 +78,11 @@
     "publishPassword" : "dvyp049iHMsPr5vz",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
+        "paramName" : "domain_type"
+      },
+      "value" : "Organization"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "db_method"
       },
       "value" : "GET"
@@ -85,12 +90,7 @@
       "appCatalogItemParameter" : {
         "paramName" : "path"
       },
-      "value" : "#Trigger:1871:datastoreID!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "organization_name"
-      },
-      "value" : "Research Labs"
+      "value" : "#Trigger:1871:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "request_entity"
@@ -98,9 +98,9 @@
       "value" : ""
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "domain_type"
+        "paramName" : "organization_name"
       },
-      "value" : "Organization"
+      "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "type_name"
@@ -136,6 +136,11 @@
       "value" : "false"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "column_mapping_as_string"
+      },
+      "value" : "[{\"key\":\"counter\",\"value\":\"_source[\\\"counter\\\"]\"},{\"key\":\"lock\",\"value\":\"_source[\\\"lock\\\"]\"},{\"key\":\"inputData\",\"value\":\"_source[\\\"inputData\\\"]\"},{\"key\":\"repeatTrigger\",\"value\":\"_source[\\\"repeatTrigger\\\"]\"},{\"key\":\"extraData\",\"value\":\"_source[\\\"extraData\\\"]\"}]"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "json_content"
       },
       "value" : "#App:18639:datastore.response!String"
@@ -143,16 +148,11 @@
       "appCatalogItemParameter" : {
         "paramName" : "column_mapping"
       },
-      "value" : "[{\"key\":\"context\",\"value\":\"_source[\\\"context\\\"]\"}]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "column_mapping_as_string"
-      },
-      "value" : "[{\"key\":\"counter\",\"value\":\"_source[\\\"counter\\\"]\"},{\"key\":\"lock\",\"value\":\"_source[\\\"lock\\\"]\"},{\"key\":\"inputData\",\"value\":\"_source[\\\"inputData\\\"]\"},{\"key\":\"repeatTrigger\",\"value\":\"_source[\\\"repeatTrigger\\\"]\"}]"
+      "value" : "[]"
     } ],
     "locationLeft" : 680.0,
     "locationTop" : 390.0,
-    "outputVariables" : "[{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"lock\",\"type\":\"String\"}]",
+    "outputVariables" : "[{\"name\":\"extraData\",\"type\":\"String\"},{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"lock\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
     "id" : 18661,
@@ -347,26 +347,6 @@
     "publishPassword" : "hxUpULzvYF0QWMiq",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "params"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "advanced"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "body"
-      },
-      "value" : "#App:18669:nextInput!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "verify_ssl"
-      },
-      "value" : "true"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "proxies_enabled"
       },
       "value" : "false"
@@ -377,14 +357,24 @@
       "value" : "[]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "headers"
+        "paramName" : "fail_on_error"
+      },
+      "value" : "true"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "body"
+      },
+      "value" : "#App:18669:nextInput!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "params"
       },
       "value" : "[]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "http_method"
+        "paramName" : "headers"
       },
-      "value" : "POST"
+      "value" : "[]"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "url"
@@ -392,9 +382,19 @@
       "value" : "#App:18650:repeatTrigger!String"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "fail_on_error"
+        "paramName" : "http_method"
+      },
+      "value" : "POST"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "verify_ssl"
       },
       "value" : "true"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "advanced"
+      },
+      "value" : "[]"
     } ],
     "locationLeft" : 890.0,
     "locationTop" : 610.0,
@@ -421,9 +421,14 @@
     "publishPassword" : "QhdVgIQYJo2nMYeK",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "type_name"
+        "paramName" : "domain_type"
       },
-      "value" : "#App:18733:datastoreName!String"
+      "value" : "Organization"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "request_entity"
+      },
+      "value" : "{\n\"inputData\": \"#App:18743:find_replace.output!String\",\n\"outputData\": \"#Trigger:1871:outputData!String\",\n\"extraData\": \"#App:18650:extraData!String\",\n\"counter\": #App:18664:newCount!String ,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18650:repeatTrigger!String\"\n}"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "db_method"
@@ -436,19 +441,14 @@
       "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
-      },
-      "value" : "{\n\"inputData\": \"#App:18743:find_replace.output!String\",\n\"outputData\": \"#Trigger:1871:outputData!String\",\n\"context\": {},\n\"counter\": #App:18664:newCount!String ,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18650:repeatTrigger!String\"\n}"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "path"
       },
-      "value" : "#Trigger:1871:datastoreID!String"
+      "value" : "#Trigger:1871:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "domain_type"
+        "paramName" : "type_name"
       },
-      "value" : "Organization"
+      "value" : "#App:18733:datastoreName!String"
     } ],
     "locationLeft" : 890.0,
     "locationTop" : 700.0,
@@ -673,10 +673,10 @@
     "orFilters" : false,
     "fireOnDuplicate" : false,
     "renderBodyAsTip" : false,
-    "outputVariables" : "[{\"name\":\"extra_data\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"},{\"name\":\"datastoreID\",\"type\":\"String\"}]",
-    "pipeInputParams" : "[{\"label\":\"Datastore ID\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"datastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]},{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String,StringArray,TCEntityArray,TCEntity\",\"required\":false,\"name\":\"outputData\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]},{\"label\":\"Extra Data\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"extra_data\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]}]",
+    "outputVariables" : "[{\"name\":\"componentDatastoreID\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
+    "pipeInputParams" : "[{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String,StringArray,TCEntityArray,TCEntity\",\"required\":false,\"name\":\"outputData\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]},{\"label\":\"Component Datastore ID\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"componentDatastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
     "pipeOutputParams" : "[]"
   } ],
   "exportablePipes" : [ ],
-  "dateExported" : "6/21/18 5:57 PM"
+  "dateExported" : "6/26/18 3:43 PM"
 }

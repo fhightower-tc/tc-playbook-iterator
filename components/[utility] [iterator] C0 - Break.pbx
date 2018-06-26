@@ -1,9 +1,9 @@
 {
   "definitionVersion" : "1.0.0",
-  "name" : "Break",
+  "name" : "[utility] [iterator] C0 - Break",
   "type" : "Pipe",
   "panX" : 20.0,
-  "panY" : 20.0,
+  "panY" : 176.0,
   "logLevel" : "WARN",
   "description" : "A component used with the iterator to remove a lock.",
   "jobList" : [ {
@@ -26,16 +26,6 @@
     "publishPassword" : "K0eYeBFb8MzjjE4S",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
-      },
-      "value" : ""
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "db_method"
-      },
-      "value" : "GET"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "domain_type"
       },
       "value" : "Organization"
@@ -46,6 +36,16 @@
       "value" : "array_iterator"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "db_method"
+      },
+      "value" : "GET"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "request_entity"
+      },
+      "value" : ""
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "organization_name"
       },
       "value" : "Research Labs"
@@ -53,7 +53,7 @@
       "appCatalogItemParameter" : {
         "paramName" : "path"
       },
-      "value" : "#Trigger:1888:datastoreID!String"
+      "value" : "#Trigger:1888:componentDatastoreID!String"
     } ],
     "locationLeft" : 400.0,
     "locationTop" : 50.0,
@@ -79,28 +79,28 @@
     "publishPassword" : "bMybWyomgFhjYBJp",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "json_content"
-      },
-      "value" : "#App:18855:datastore.response!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "column_mapping_as_string"
-      },
-      "value" : "[{\"key\":\"counter\",\"value\":\"_source[\\\"counter\\\"]\"},{\"key\":\"lock\",\"value\":\"_source[\\\"lock\\\"]\"},{\"key\":\"inputData\",\"value\":\"_source[\\\"inputData\\\"]\"},{\"key\":\"repeatTrigger\",\"value\":\"_source[\\\"repeatTrigger\\\"]\"},{\"key\":\"outputData\",\"value\":\"_source[\\\"outputData\\\"]\"}]"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "null_missing_leaf"
       },
       "value" : "false"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "json_content"
+      },
+      "value" : "#App:18855:datastore.response!String"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "column_mapping"
       },
-      "value" : "[{\"key\":\"context\",\"value\":\"_source[\\\"context\\\"]\"}]"
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "column_mapping_as_string"
+      },
+      "value" : "[{\"key\":\"counter\",\"value\":\"_source[\\\"counter\\\"]\"},{\"key\":\"lock\",\"value\":\"_source[\\\"lock\\\"]\"},{\"key\":\"inputData\",\"value\":\"_source[\\\"inputData\\\"]\"},{\"key\":\"repeatTrigger\",\"value\":\"_source[\\\"repeatTrigger\\\"]\"},{\"key\":\"outputData\",\"value\":\"_source[\\\"outputData\\\"]\"},{\"key\":\"extraData\",\"value\":\"_source[\\\"extraData\\\"]\"}]"
     } ],
     "locationLeft" : 400.0,
     "locationTop" : 130.0,
-    "outputVariables" : "[{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
+    "outputVariables" : "[{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"extraData\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
     "id" : 18857,
@@ -122,14 +122,9 @@
     "publishPassword" : "taX7Sb28qsvVYAFC",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "path"
+        "paramName" : "request_entity"
       },
-      "value" : "#Trigger:1888:datastoreID!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "db_method"
-      },
-      "value" : "POST"
+      "value" : "{\n\"inputData\": \"#App:18975:find_replace.output!String\",\n\"outputData\": \"#App:20239:output!String\",\n\"extraData\": \"#App:18856:extraData!String\",\n\"counter\": #App:18856:counter!String,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18856:repeatTrigger!String\"\n}"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "type_name"
@@ -137,9 +132,14 @@
       "value" : "array_iterator"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
+        "paramName" : "db_method"
       },
-      "value" : "{\n\"inputData\": \"#App:18975:find_replace.output!String\",\n\"outputData\": \"#App:20239:output!String\",\n\"context\": {},\n\"counter\": #App:18856:counter!String,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18856:repeatTrigger!String\"\n}"
+      "value" : "POST"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "path"
+      },
+      "value" : "#Trigger:1888:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "organization_name"
@@ -222,6 +222,16 @@
     "publishPassword" : "ZvimMgXbecEq2F8z",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
+        "paramName" : "operator"
+      },
+      "value" : "equals"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "as_numeric"
+      },
+      "value" : "false"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "operand_2"
       },
       "value" : "null"
@@ -235,16 +245,6 @@
         "paramName" : "operand_1"
       },
       "value" : "#Trigger:1888:outputData!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "as_numeric"
-      },
-      "value" : "false"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "operator"
-      },
-      "value" : "equals"
     } ],
     "locationLeft" : 620.0,
     "locationTop" : 130.0,
@@ -386,16 +386,16 @@
     "type" : "PipeConfig",
     "eventType" : "External",
     "locationLeft" : 400.0,
-    "locationTop" : 20.0,
+    "locationTop" : -30.0,
     "httpBasicAuthEnable" : false,
     "anyOrg" : true,
     "orFilters" : false,
     "fireOnDuplicate" : false,
     "renderBodyAsTip" : false,
-    "outputVariables" : "[{\"name\":\"datastoreID\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
-    "pipeInputParams" : "[{\"label\":\"DataStore ID\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"datastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]},{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"outputData\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
+    "outputVariables" : "[{\"name\":\"componentDatastoreID\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
+    "pipeInputParams" : "[{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"outputData\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]},{\"label\":\"DataStore ID for Iterator Components\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"componentDatastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
     "pipeOutputParams" : "[]"
   } ],
   "exportablePipes" : [ ],
-  "dateExported" : "6/21/18 5:58 PM"
+  "dateExported" : "6/26/18 3:43 PM"
 }

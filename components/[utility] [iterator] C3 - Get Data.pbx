@@ -1,0 +1,172 @@
+{
+  "definitionVersion" : "1.0.0",
+  "name" : "[utility] [iterator] C3 - Get Data",
+  "type" : "Pipe",
+  "panX" : 20.0,
+  "panY" : 20.0,
+  "logLevel" : "WARN",
+  "description" : "",
+  "jobList" : [ {
+    "id" : 19931,
+    "appCatalogItem" : {
+      "programName" : "DataStore",
+      "displayName" : "DataStore",
+      "programVersion" : "1.0.0"
+    },
+    "name" : "DataStore 1",
+    "scheduleType" : "Daily",
+    "scheduleLOM" : false,
+    "notifyOnFailure" : true,
+    "notifyOnPartialFailure" : false,
+    "notifyOnComplete" : false,
+    "notifyIncludeLogFiles" : false,
+    "enableNotifications" : false,
+    "publishAuth" : false,
+    "publishUsername" : "98ygv5hxU2gplbLo",
+    "publishPassword" : "VN7MVAVDc7MzbQ3w",
+    "jobParameterList" : [ {
+      "appCatalogItemParameter" : {
+        "paramName" : "db_method"
+      },
+      "value" : "GET"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "type_name"
+      },
+      "value" : "array_iterator"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "request_entity"
+      },
+      "value" : ""
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "organization_name"
+      },
+      "value" : "Research Labs"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "path"
+      },
+      "value" : "#Trigger:1952:datastoreID!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "domain_type"
+      },
+      "value" : "Organization"
+    } ],
+    "locationLeft" : 530.0,
+    "locationTop" : 450.0,
+    "outputVariables" : "[{\"name\":\"datastore.response\",\"type\":\"String\"}]",
+    "playbookRetryEnabled" : false
+  }, {
+    "id" : 19932,
+    "appCatalogItem" : {
+      "programName" : "TCPB - SetVariable v1.0",
+      "displayName" : "Set Variable",
+      "programVersion" : "1.0.5"
+    },
+    "name" : "Set Variable 1",
+    "scheduleType" : "Daily",
+    "scheduleLOM" : false,
+    "notifyOnFailure" : true,
+    "notifyOnPartialFailure" : false,
+    "notifyOnComplete" : false,
+    "notifyIncludeLogFiles" : false,
+    "enableNotifications" : false,
+    "publishAuth" : false,
+    "publishUsername" : "luYMccO4VLxlWfW9",
+    "publishPassword" : "yDHP4gUq856G9vt6",
+    "jobParameterList" : [ {
+      "appCatalogItemParameter" : {
+        "paramName" : "variable_mapping"
+      },
+      "value" : "[{\"key\":\"messagePrefix\",\"value\":\"[iterator] C3:\"}]"
+    } ],
+    "locationLeft" : 530.0,
+    "locationTop" : 330.0,
+    "playbookRetryEnabled" : false
+  }, {
+    "id" : 19934,
+    "appCatalogItem" : {
+      "programName" : "TCPB - JsonPath v1.0",
+      "displayName" : "Json Path",
+      "programVersion" : "2.0.3"
+    },
+    "name" : "Json Path 1",
+    "scheduleType" : "Daily",
+    "scheduleLOM" : false,
+    "notifyOnFailure" : true,
+    "notifyOnPartialFailure" : false,
+    "notifyOnComplete" : false,
+    "notifyIncludeLogFiles" : false,
+    "enableNotifications" : false,
+    "publishAuth" : false,
+    "publishUsername" : "EduqvzxJ2vTVd8rB",
+    "publishPassword" : "WEK3g1bBTwXAHisg",
+    "jobParameterList" : [ {
+      "appCatalogItemParameter" : {
+        "paramName" : "column_mapping"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "column_mapping_as_string"
+      },
+      "value" : "[{\"key\":\"outputData\",\"value\":\"_source.outputData\"},{\"key\":\"counter\",\"value\":\"_source.counter\"},{\"key\":\"extraData\",\"value\":\"_source.extraData\"}]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "null_missing_leaf"
+      },
+      "value" : "false"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "json_content"
+      },
+      "value" : "#App:19931:datastore.response!String"
+    } ],
+    "locationLeft" : 740.0,
+    "locationTop" : 450.0,
+    "outputVariables" : "[{\"name\":\"extraData\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
+    "playbookRetryEnabled" : false
+  } ],
+  "playbookConnectionList" : [ {
+    "type" : "Pass",
+    "isCircularOnTarget" : false,
+    "targetJobId" : 19932,
+    "sourceTriggerId" : 1952
+  }, {
+    "type" : "Pass",
+    "isCircularOnTarget" : false,
+    "sourceJobId" : 19932,
+    "targetJobId" : 19931
+  }, {
+    "type" : "Pass",
+    "isCircularOnTarget" : false,
+    "sourceJobId" : 19931,
+    "targetJobId" : 19934
+  }, {
+    "type" : "Pass",
+    "isCircularOnTarget" : true,
+    "sourceJobId" : 19934,
+    "targetTriggerId" : 1952
+  } ],
+  "playbookTriggerList" : [ {
+    "id" : 1952,
+    "name" : "Component Trigger",
+    "type" : "PipeConfig",
+    "eventType" : "External",
+    "locationLeft" : 310.0,
+    "locationTop" : 330.0,
+    "httpBasicAuthEnable" : false,
+    "anyOrg" : true,
+    "orFilters" : false,
+    "fireOnDuplicate" : false,
+    "renderBodyAsTip" : false,
+    "outputVariables" : "[{\"name\":\"datastoreID\",\"type\":\"String\"}]",
+    "pipeInputParams" : "[{\"label\":\"Datastore ID\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"datastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
+    "pipeOutputParams" : "[{\"key\":\"outputData\",\"value\":\"#App:19934:outputData!String \",\"displayValue\":\"#App:19934:outputData!String \"},{\"key\":\"counter\",\"value\":\"#App:19934:counter!String \",\"displayValue\":\"#App:19934:counter!String \"},{\"key\":\"extraData\",\"value\":\"#App:19934:extraData!String\",\"displayValue\":\"#App:19934:extraData!String\"}]"
+  } ],
+  "exportablePipes" : [ ],
+  "dateExported" : "6/26/18 3:43 PM"
+}
