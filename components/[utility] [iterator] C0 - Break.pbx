@@ -2,8 +2,8 @@
   "definitionVersion" : "1.0.0",
   "name" : "[utility] [iterator] C0 - Break",
   "type" : "Pipe",
-  "panX" : 20.0,
-  "panY" : 176.0,
+  "panX" : 120.0,
+  "panY" : 214.0,
   "logLevel" : "WARN",
   "description" : "A component used with the iterator to remove a lock.",
   "jobList" : [ {
@@ -100,7 +100,7 @@
     } ],
     "locationLeft" : 400.0,
     "locationTop" : 130.0,
-    "outputVariables" : "[{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"extraData\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
+    "outputVariables" : "[{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"},{\"name\":\"extraData\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
     "id" : 18857,
@@ -122,9 +122,9 @@
     "publishPassword" : "taX7Sb28qsvVYAFC",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
+        "paramName" : "organization_name"
       },
-      "value" : "{\n\"inputData\": \"#App:18975:find_replace.output!String\",\n\"outputData\": \"#App:20239:output!String\",\n\"extraData\": \"#App:18856:extraData!String\",\n\"counter\": #App:18856:counter!String,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18856:repeatTrigger!String\"\n}"
+      "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "type_name"
@@ -132,9 +132,9 @@
       "value" : "array_iterator"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "db_method"
+        "paramName" : "domain_type"
       },
-      "value" : "POST"
+      "value" : "Organization"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "path"
@@ -142,65 +142,17 @@
       "value" : "#Trigger:1888:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "organization_name"
+        "paramName" : "db_method"
       },
-      "value" : "Research Labs"
+      "value" : "POST"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "domain_type"
+        "paramName" : "request_entity"
       },
-      "value" : "Organization"
+      "value" : "{\n\"inputData\": \"#App:20453:escapedArray!String\",\n\"outputData\": \"#App:20454:escapedArray!String\",\n\"extraData\": \"#App:20455:escapedArray!String\",\n\"counter\": #App:18856:counter!String,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18856:repeatTrigger!String\"\n}"
     } ],
-    "locationLeft" : 400.0,
-    "locationTop" : 340.0,
-    "playbookRetryEnabled" : false
-  }, {
-    "id" : 18975,
-    "appCatalogItem" : {
-      "programName" : "Find / Replace",
-      "displayName" : "Find and Replace",
-      "programVersion" : "1.0.0"
-    },
-    "name" : "Escape Quotes",
-    "scheduleType" : "Daily",
-    "scheduleLOM" : false,
-    "notifyOnFailure" : true,
-    "notifyOnPartialFailure" : false,
-    "notifyOnComplete" : false,
-    "notifyIncludeLogFiles" : false,
-    "enableNotifications" : false,
-    "publishAuth" : false,
-    "publishUsername" : "ydH8uhNQfuUqmuad",
-    "publishPassword" : "k1pH1lShFTL2ZBch",
-    "jobParameterList" : [ {
-      "appCatalogItemParameter" : {
-        "paramName" : "match_case"
-      },
-      "value" : "false"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "find_regex"
-      },
-      "value" : "\""
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "input_text"
-      },
-      "value" : "#App:18856:inputData!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "replace_regex"
-      },
-      "value" : "\\\\\\\\\\\\\""
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "as_regex"
-      },
-      "value" : "false"
-    } ],
-    "locationLeft" : 400.0,
-    "locationTop" : 260.0,
-    "outputVariables" : "[{\"name\":\"find_replace.output\",\"type\":\"String\"}]",
+    "locationLeft" : 410.0,
+    "locationTop" : 550.0,
     "playbookRetryEnabled" : false
   }, {
     "id" : 20236,
@@ -333,6 +285,93 @@
     "locationTop" : 160.0,
     "outputVariables" : "[{\"name\":\"output\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
+  }, {
+    "id" : 20453,
+    "appCatalogItem" : {
+      "programName" : "49ce1564bcdf748988c624a5659a0451",
+      "displayName" : "[utility] Escape Quotes for Datastore",
+      "programVersion" : "1.0.0",
+      "pipeRunLevel" : true
+    },
+    "name" : "[utility] Escape Quotes for Datastore 2",
+    "scheduleType" : "Daily",
+    "scheduleLOM" : false,
+    "notifyOnFailure" : true,
+    "notifyOnPartialFailure" : false,
+    "notifyOnComplete" : false,
+    "notifyIncludeLogFiles" : false,
+    "enableNotifications" : false,
+    "publishAuth" : false,
+    "publishUsername" : "D2kQ8E2xBNbojXFm",
+    "publishPassword" : "jp37VQOXhdq5eTZ2",
+    "jobParameterList" : [ {
+      "appCatalogItemParameter" : {
+        "paramName" : "array"
+      },
+      "value" : "#App:18856:inputData!String"
+    } ],
+    "locationLeft" : 410.0,
+    "locationTop" : 310.0,
+    "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
+    "playbookRetryEnabled" : false
+  }, {
+    "id" : 20454,
+    "appCatalogItem" : {
+      "programName" : "49ce1564bcdf748988c624a5659a0451",
+      "displayName" : "[utility] Escape Quotes for Datastore",
+      "programVersion" : "1.0.0",
+      "pipeRunLevel" : true
+    },
+    "name" : "[utility] Escape Quotes for Datastore 3",
+    "scheduleType" : "Daily",
+    "scheduleLOM" : false,
+    "notifyOnFailure" : true,
+    "notifyOnPartialFailure" : false,
+    "notifyOnComplete" : false,
+    "notifyIncludeLogFiles" : false,
+    "enableNotifications" : false,
+    "publishAuth" : false,
+    "publishUsername" : "kQ1rOjdppeM5Uh02",
+    "publishPassword" : "mxegqODfPQqd0qaA",
+    "jobParameterList" : [ {
+      "appCatalogItemParameter" : {
+        "paramName" : "array"
+      },
+      "value" : "#App:20239:output!String"
+    } ],
+    "locationLeft" : 410.0,
+    "locationTop" : 390.0,
+    "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
+    "playbookRetryEnabled" : false
+  }, {
+    "id" : 20455,
+    "appCatalogItem" : {
+      "programName" : "49ce1564bcdf748988c624a5659a0451",
+      "displayName" : "[utility] Escape Quotes for Datastore",
+      "programVersion" : "1.0.0",
+      "pipeRunLevel" : true
+    },
+    "name" : "[utility] Escape Quotes for Datastore 4",
+    "scheduleType" : "Daily",
+    "scheduleLOM" : false,
+    "notifyOnFailure" : true,
+    "notifyOnPartialFailure" : false,
+    "notifyOnComplete" : false,
+    "notifyIncludeLogFiles" : false,
+    "enableNotifications" : false,
+    "publishAuth" : false,
+    "publishUsername" : "D41zIVJZXOqWMzQt",
+    "publishPassword" : "xcWvjvyijNnNAOJd",
+    "jobParameterList" : [ {
+      "appCatalogItemParameter" : {
+        "paramName" : "array"
+      },
+      "value" : "#App:18856:extraData!String"
+    } ],
+    "locationLeft" : 410.0,
+    "locationTop" : 470.0,
+    "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
+    "playbookRetryEnabled" : false
   } ],
   "playbookConnectionList" : [ {
     "type" : "Pass",
@@ -344,11 +383,6 @@
     "isCircularOnTarget" : false,
     "sourceJobId" : 18855,
     "targetJobId" : 18856
-  }, {
-    "type" : "Pass",
-    "isCircularOnTarget" : false,
-    "sourceJobId" : 18975,
-    "targetJobId" : 18857
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
@@ -378,7 +412,22 @@
     "type" : "Pass",
     "isCircularOnTarget" : false,
     "sourceJobId" : 20239,
-    "targetJobId" : 18975
+    "targetJobId" : 20453
+  }, {
+    "type" : "Pass",
+    "isCircularOnTarget" : false,
+    "sourceJobId" : 20453,
+    "targetJobId" : 20454
+  }, {
+    "type" : "Pass",
+    "isCircularOnTarget" : false,
+    "sourceJobId" : 20454,
+    "targetJobId" : 20455
+  }, {
+    "type" : "Pass",
+    "isCircularOnTarget" : false,
+    "sourceJobId" : 20455,
+    "targetJobId" : 18857
   } ],
   "playbookTriggerList" : [ {
     "id" : 1888,
@@ -396,6 +445,91 @@
     "pipeInputParams" : "[{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"outputData\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]},{\"label\":\"DataStore ID for Iterator Components\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"componentDatastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
     "pipeOutputParams" : "[]"
   } ],
-  "exportablePipes" : [ ],
-  "dateExported" : "6/26/18 3:43 PM"
+  "exportablePipes" : [ {
+    "definitionVersion" : "49ce1564bcdf748988c624a5659a0451",
+    "name" : "[utility] Escape Quotes for Datastore",
+    "type" : "Pipe",
+    "panX" : 20.0,
+    "panY" : 20.0,
+    "logLevel" : "WARN",
+    "description" : "",
+    "jobList" : [ {
+      "id" : 19923,
+      "appCatalogItem" : {
+        "programName" : "Find / Replace",
+        "displayName" : "Find and Replace",
+        "programVersion" : "1.0.0"
+      },
+      "name" : "Find and Replace 1",
+      "scheduleType" : "Daily",
+      "scheduleLOM" : false,
+      "notifyOnFailure" : true,
+      "notifyOnPartialFailure" : false,
+      "notifyOnComplete" : false,
+      "notifyIncludeLogFiles" : false,
+      "enableNotifications" : false,
+      "publishAuth" : false,
+      "publishUsername" : "PYZxuF3bPSN5HUis",
+      "publishPassword" : "M0lSF9bAWXI5JvZJ",
+      "jobParameterList" : [ {
+        "appCatalogItemParameter" : {
+          "paramName" : "input_text"
+        },
+        "value" : "#Trigger:1950:array!String"
+      }, {
+        "appCatalogItemParameter" : {
+          "paramName" : "match_case"
+        },
+        "value" : "false"
+      }, {
+        "appCatalogItemParameter" : {
+          "paramName" : "replace_regex"
+        },
+        "value" : "\\\\\\\\\\\\\""
+      }, {
+        "appCatalogItemParameter" : {
+          "paramName" : "find_regex"
+        },
+        "value" : "\""
+      }, {
+        "appCatalogItemParameter" : {
+          "paramName" : "as_regex"
+        },
+        "value" : "false"
+      } ],
+      "locationLeft" : 440.0,
+      "locationTop" : 280.0,
+      "outputVariables" : "[{\"name\":\"find_replace.output\",\"type\":\"String\"}]",
+      "playbookRetryEnabled" : false
+    } ],
+    "playbookConnectionList" : [ {
+      "type" : "Pass",
+      "isCircularOnTarget" : false,
+      "targetJobId" : 19923,
+      "sourceTriggerId" : 1950
+    }, {
+      "type" : "Pass",
+      "isCircularOnTarget" : true,
+      "sourceJobId" : 19923,
+      "targetTriggerId" : 1950
+    } ],
+    "playbookTriggerList" : [ {
+      "id" : 1950,
+      "name" : "Component Trigger",
+      "type" : "PipeConfig",
+      "eventType" : "External",
+      "locationLeft" : 210.0,
+      "locationTop" : 170.0,
+      "httpBasicAuthEnable" : false,
+      "anyOrg" : true,
+      "orFilters" : false,
+      "fireOnDuplicate" : false,
+      "renderBodyAsTip" : false,
+      "outputVariables" : "[{\"name\":\"array\",\"type\":\"String\"}]",
+      "pipeInputParams" : "[{\"label\":\"Array (as a string)\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"array\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
+      "pipeOutputParams" : "[{\"key\":\"escapedArray\",\"value\":\"#App:19923:find_replace.output!String \",\"displayValue\":\"#App:19923:find_replace.output!String \"}]"
+    } ],
+    "dateExported" : "6/28/18 5:57 PM"
+  } ],
+  "dateExported" : "6/28/18 5:57 PM"
 }
