@@ -2,12 +2,12 @@
   "definitionVersion" : "1.0.0",
   "name" : "[utility] [iterator] C1 - Initialize",
   "type" : "Pipe",
-  "panX" : 321.0,
-  "panY" : 507.0,
+  "panX" : -213.0,
+  "panY" : 290.0,
   "logLevel" : "WARN",
   "description" : "A PlayBook Component to iterate through a list and perform some arbitrary pb action on each item.",
   "jobList" : [ {
-    "id" : 18634,
+    "id" : 20482,
     "appCatalogItem" : {
       "programName" : "DataStore",
       "displayName" : "DataStore",
@@ -31,14 +31,9 @@
       "value" : "Organization"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
+        "paramName" : "db_method"
       },
-      "value" : "{\n\"inputData\": \"#App:20456:escapedArray!String\",\n\"outputData\": \"#App:20457:escapedArray!String\",\n\"extraData\": \"#App:20458:escapedArray!String\" ,\n\"counter\": 0,\n\"lock\": true,\n\"repeatTrigger\": \"#Trigger:1870:action_pb_link!String\"\n}"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "path"
-      },
-      "value" : ""
+      "value" : "POST"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "organization_name"
@@ -46,9 +41,14 @@
       "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "db_method"
+        "paramName" : "request_entity"
       },
-      "value" : "POST"
+      "value" : "{\n\"inputData\": \"#App:20502:escapedArray!String\",\n\"outputData\": \"#App:20503:escapedArray!String\",\n\"extraData\": \"#App:20504:escapedArray!String\" ,\n\"counter\": 0,\n\"lock\": true,\n\"repeatTrigger\": \"#Trigger:2017:action_pb_link!String\"\n}"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "path"
+      },
+      "value" : ""
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "type_name"
@@ -60,7 +60,7 @@
     "outputVariables" : "[{\"name\":\"datastore.response\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18636,
+    "id" : 20483,
     "appCatalogItem" : {
       "programName" : "TCPB - JsonPath v1.0",
       "displayName" : "Json Path",
@@ -79,14 +79,14 @@
     "publishPassword" : "wyqixmNE5PL0gb1E",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "null_missing_leaf"
+        "paramName" : "column_mapping"
       },
-      "value" : "false"
+      "value" : "[]"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "json_content"
       },
-      "value" : "#App:18634:datastore.response!String"
+      "value" : "#App:20482:datastore.response!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "column_mapping_as_string"
@@ -94,16 +94,16 @@
       "value" : "[{\"key\":\"componentDatastoreID\",\"value\":\"_id\"}]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "column_mapping"
+        "paramName" : "null_missing_leaf"
       },
-      "value" : "[]"
+      "value" : "false"
     } ],
     "locationLeft" : 650.0,
     "locationTop" : -40.0,
     "outputVariables" : "[{\"name\":\"componentDatastoreID\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18637,
+    "id" : 20484,
     "appCatalogItem" : {
       "programName" : "TCPB - HTTP Client v2.0",
       "displayName" : "HTTP Client",
@@ -122,39 +122,9 @@
     "publishPassword" : "JjOms8abV8rTorYp",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "params"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "body"
-      },
-      "value" : "#App:18638:first_item!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "headers"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "http_method"
       },
       "value" : "POST"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "advanced"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "fail_on_error"
-      },
-      "value" : "true"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "url"
-      },
-      "value" : "#Trigger:1870:action_pb_link!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "proxies_enabled"
@@ -162,14 +132,44 @@
       "value" : "false"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "multipart"
+        "paramName" : "fail_on_error"
       },
-      "value" : "[]"
+      "value" : "true"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "body"
+      },
+      "value" : "#App:20485:first_item!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "verify_ssl"
       },
       "value" : "true"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "headers"
+      },
+      "value" : "[{\"key\":\"iteratorDatastoreID\",\"value\":\"#App:20483:componentDatastoreID!String\"}]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "params"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "advanced"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "url"
+      },
+      "value" : "#Trigger:2017:action_pb_link!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "multipart"
+      },
+      "value" : "[]"
     } ],
     "locationLeft" : 760.0,
     "locationTop" : 50.0,
@@ -177,7 +177,7 @@
     "playbookRetryDelayMinutes" : 1,
     "playbookRetryMaxRetries" : 5
   }, {
-    "id" : 18638,
+    "id" : 20485,
     "appCatalogItem" : {
       "programName" : "TCPB - JsonPath v1.0",
       "displayName" : "Json Path",
@@ -196,14 +196,9 @@
     "publishPassword" : "ppVBDepYcQuBTK0J",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "column_mapping"
+        "paramName" : "null_missing_leaf"
       },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "json_content"
-      },
-      "value" : "#App:20057:input_array!String"
+      "value" : "false"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "column_mapping_as_string"
@@ -211,16 +206,21 @@
       "value" : "[{\"key\":\"first_item\",\"value\":\"[0]\"}]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "null_missing_leaf"
+        "paramName" : "json_content"
       },
-      "value" : "false"
+      "value" : "#App:20490:input_array!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "column_mapping"
+      },
+      "value" : "[]"
     } ],
     "locationLeft" : 830.0,
     "locationTop" : -40.0,
     "outputVariables" : "[{\"name\":\"first_item\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18912,
+    "id" : 20486,
     "appCatalogItem" : {
       "programName" : "Merge",
       "displayName" : "Merge",
@@ -241,7 +241,7 @@
     "locationTop" : -180.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18913,
+    "id" : 20487,
     "appCatalogItem" : {
       "programName" : "DataStore",
       "displayName" : "DataStore",
@@ -260,19 +260,14 @@
     "publishPassword" : "BabOm2jTnBe1XRZD",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "domain_type"
-      },
-      "value" : "Organization"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "path"
-      },
-      "value" : "#App:18636:componentDatastoreID!String"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "db_method"
       },
       "value" : "GET"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "domain_type"
+      },
+      "value" : "Organization"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "type_name"
@@ -280,21 +275,26 @@
       "value" : "array_iterator"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "organization_name"
+        "paramName" : "path"
       },
-      "value" : "Research Labs"
+      "value" : "#App:20483:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "request_entity"
       },
       "value" : ""
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "organization_name"
+      },
+      "value" : "Research Labs"
     } ],
     "locationLeft" : -90.0,
     "locationTop" : -210.0,
     "outputVariables" : "[{\"name\":\"datastore.response\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18914,
+    "id" : 20488,
     "appCatalogItem" : {
       "programName" : "TCPB - JsonPath v1.0",
       "displayName" : "Json Path",
@@ -313,31 +313,31 @@
     "publishPassword" : "qZwIlaRvd8weexoX",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
+        "paramName" : "column_mapping"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "column_mapping_as_string"
       },
       "value" : "[{\"key\":\"output_data\",\"value\":\"_source[\\\"outputData\\\"]\"}]"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "json_content"
+      },
+      "value" : "#App:20487:datastore.response!String"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "null_missing_leaf"
       },
       "value" : "false"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "json_content"
-      },
-      "value" : "#App:18913:datastore.response!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "column_mapping"
-      },
-      "value" : "[]"
     } ],
     "locationLeft" : -90.0,
     "locationTop" : -130.0,
     "outputVariables" : "[{\"name\":\"output_data\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20055,
+    "id" : 20489,
     "appCatalogItem" : {
       "programName" : "If / Else",
       "displayName" : "If / Else",
@@ -361,30 +361,30 @@
       "value" : "false"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "operand_1"
-      },
-      "value" : "#Trigger:1870:input_array!String"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "operand_2"
       },
       "value" : "null"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "operator"
-      },
-      "value" : "equals"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "as_numeric"
       },
       "value" : "false"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "operand_1"
+      },
+      "value" : "#Trigger:2017:input_array!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "operator"
+      },
+      "value" : "equals"
     } ],
     "locationLeft" : 370.0,
     "locationTop" : -260.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20057,
+    "id" : 20490,
     "appCatalogItem" : {
       "programName" : "Merge",
       "displayName" : "Merge",
@@ -405,14 +405,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "output_array"
       },
-      "value" : "[{\"key\":\"input_array\",\"value\":\"#Trigger:1870:input_array!String\"},{\"key\":\"input_array\",\"value\":\"#App:20338:logger.content!String\"}]"
+      "value" : "[{\"key\":\"input_array\",\"value\":\"#Trigger:2017:input_array!String\"},{\"key\":\"input_array\",\"value\":\"#App:20501:logger.content!String\"}]"
     } ],
     "locationLeft" : 500.0,
     "locationTop" : -140.0,
     "outputVariables" : "[{\"name\":\"input_array\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20183,
+    "id" : 20491,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -434,13 +434,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 140.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20184,
+    "id" : 20492,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -462,13 +462,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 220.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20185,
+    "id" : 20493,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -490,13 +490,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 300.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20186,
+    "id" : 20494,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -518,13 +518,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 380.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20187,
+    "id" : 20495,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -546,13 +546,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 460.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20188,
+    "id" : 20496,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -574,13 +574,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 540.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20189,
+    "id" : 20497,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -602,13 +602,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 620.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20190,
+    "id" : 20498,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -630,13 +630,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 700.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20191,
+    "id" : 20499,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -658,13 +658,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 780.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20192,
+    "id" : 20500,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
       "displayName" : "[utility] [iterator] Check Lock and Delay",
@@ -686,13 +686,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "datastoreID"
       },
-      "value" : "#App:18636:componentDatastoreID!String"
+      "value" : "#App:20483:componentDatastoreID!String"
     } ],
     "locationLeft" : 510.0,
     "locationTop" : 860.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20338,
+    "id" : 20501,
     "appCatalogItem" : {
       "programName" : "Logger",
       "displayName" : "Logger",
@@ -711,21 +711,21 @@
     "publishPassword" : "qAt9CozxvlOQFlMp",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
+        "paramName" : "log_message"
+      },
+      "value" : "#Trigger:2017:input_array!StringArray"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "logging"
       },
       "value" : "INFO"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "log_message"
-      },
-      "value" : "#Trigger:1870:input_array!StringArray"
     } ],
     "locationLeft" : 490.0,
     "locationTop" : -240.0,
     "outputVariables" : "[{\"name\":\"logger.content\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20456,
+    "id" : 20502,
     "appCatalogItem" : {
       "programName" : "49ce1564bcdf748988c624a5659a0451",
       "displayName" : "[utility] Escape Quotes for Datastore",
@@ -747,14 +747,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "array"
       },
-      "value" : "#App:20057:input_array!String"
+      "value" : "#App:20490:input_array!String"
     } ],
     "locationLeft" : 740.0,
     "locationTop" : -320.0,
     "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20457,
+    "id" : 20503,
     "appCatalogItem" : {
       "programName" : "49ce1564bcdf748988c624a5659a0451",
       "displayName" : "[utility] Escape Quotes for Datastore",
@@ -776,14 +776,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "array"
       },
-      "value" : "#Trigger:1870:output_data!String"
+      "value" : "#Trigger:2017:output_data!String"
     } ],
     "locationLeft" : 740.0,
     "locationTop" : -240.0,
     "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20458,
+    "id" : 20504,
     "appCatalogItem" : {
       "programName" : "49ce1564bcdf748988c624a5659a0451",
       "displayName" : "[utility] Escape Quotes for Datastore",
@@ -805,7 +805,7 @@
       "appCatalogItemParameter" : {
         "paramName" : "array"
       },
-      "value" : "#Trigger:1870:extra_data!String"
+      "value" : "#Trigger:2017:extra_data!String"
     } ],
     "locationLeft" : 740.0,
     "locationTop" : -160.0,
@@ -815,176 +815,176 @@
   "playbookConnectionList" : [ {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18634,
-    "targetJobId" : 18636
+    "sourceJobId" : 20482,
+    "targetJobId" : 20483
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18636,
-    "targetJobId" : 18638
+    "sourceJobId" : 20483,
+    "targetJobId" : 20485
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18912,
-    "targetJobId" : 18913
+    "sourceJobId" : 20486,
+    "targetJobId" : 20487
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18913,
-    "targetJobId" : 18914
+    "sourceJobId" : 20487,
+    "targetJobId" : 20488
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : true,
-    "sourceJobId" : 18914,
-    "targetTriggerId" : 1870
+    "sourceJobId" : 20488,
+    "targetTriggerId" : 2017
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "targetJobId" : 20055,
-    "sourceTriggerId" : 1870
+    "targetJobId" : 20489,
+    "sourceTriggerId" : 2017
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18638,
-    "targetJobId" : 18637
+    "sourceJobId" : 20485,
+    "targetJobId" : 20484
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18637,
-    "targetJobId" : 20183
+    "sourceJobId" : 20484,
+    "targetJobId" : 20491
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20183,
-    "targetJobId" : 20184
+    "sourceJobId" : 20491,
+    "targetJobId" : 20492
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20184,
-    "targetJobId" : 20185
+    "sourceJobId" : 20492,
+    "targetJobId" : 20493
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20185,
-    "targetJobId" : 20186
+    "sourceJobId" : 20493,
+    "targetJobId" : 20494
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20186,
-    "targetJobId" : 20187
+    "sourceJobId" : 20494,
+    "targetJobId" : 20495
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20187,
-    "targetJobId" : 20188
+    "sourceJobId" : 20495,
+    "targetJobId" : 20496
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20188,
-    "targetJobId" : 20189
+    "sourceJobId" : 20496,
+    "targetJobId" : 20497
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20189,
-    "targetJobId" : 20190
+    "sourceJobId" : 20497,
+    "targetJobId" : 20498
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20190,
-    "targetJobId" : 20191
+    "sourceJobId" : 20498,
+    "targetJobId" : 20499
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20191,
-    "targetJobId" : 20192
+    "sourceJobId" : 20499,
+    "targetJobId" : 20500
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20183,
-    "targetJobId" : 18912
+    "sourceJobId" : 20491,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20184,
-    "targetJobId" : 18912
+    "sourceJobId" : 20492,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20185,
-    "targetJobId" : 18912
+    "sourceJobId" : 20493,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20186,
-    "targetJobId" : 18912
+    "sourceJobId" : 20494,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20187,
-    "targetJobId" : 18912
+    "sourceJobId" : 20495,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20188,
-    "targetJobId" : 18912
+    "sourceJobId" : 20496,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20189,
-    "targetJobId" : 18912
+    "sourceJobId" : 20497,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20190,
-    "targetJobId" : 18912
+    "sourceJobId" : 20498,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20191,
-    "targetJobId" : 18912
+    "sourceJobId" : 20499,
+    "targetJobId" : 20486
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20192,
-    "targetJobId" : 18912
+    "sourceJobId" : 20500,
+    "targetJobId" : 20486
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20055,
-    "targetJobId" : 20057
+    "sourceJobId" : 20489,
+    "targetJobId" : 20490
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20055,
-    "targetJobId" : 20338
+    "sourceJobId" : 20489,
+    "targetJobId" : 20501
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20338,
-    "targetJobId" : 20057
+    "sourceJobId" : 20501,
+    "targetJobId" : 20490
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20057,
-    "targetJobId" : 20456
+    "sourceJobId" : 20490,
+    "targetJobId" : 20502
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20456,
-    "targetJobId" : 20457
+    "sourceJobId" : 20502,
+    "targetJobId" : 20503
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20457,
-    "targetJobId" : 20458
+    "sourceJobId" : 20503,
+    "targetJobId" : 20504
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20458,
-    "targetJobId" : 18634
+    "sourceJobId" : 20504,
+    "targetJobId" : 20482
   } ],
   "playbookTriggerList" : [ {
-    "id" : 1870,
+    "id" : 2017,
     "name" : "Component Trigger",
     "type" : "PipeConfig",
     "eventType" : "External",
@@ -995,9 +995,9 @@
     "orFilters" : false,
     "fireOnDuplicate" : false,
     "renderBodyAsTip" : false,
-    "outputVariables" : "[{\"name\":\"extra_data\",\"type\":\"String\"},{\"name\":\"output_data\",\"type\":\"String\"},{\"name\":\"action_pb_link\",\"type\":\"String\"},{\"name\":\"input_array\",\"type\":\"String\"},{\"name\":\"input_array\",\"type\":\"StringArray\"}]",
+    "outputVariables" : "[{\"name\":\"action_pb_link\",\"type\":\"String\"},{\"name\":\"input_array\",\"type\":\"String\"},{\"name\":\"input_array\",\"type\":\"StringArray\"},{\"name\":\"extra_data\",\"type\":\"String\"},{\"name\":\"output_data\",\"type\":\"String\"}]",
     "pipeInputParams" : "[{\"label\":\"Action PlayBook Link\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"action_pb_link\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]},{\"label\":\"Input Data\",\"dataType\":\"String\",\"playbookDataType\":\"String,StringArray\",\"required\":true,\"name\":\"input_array\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]},{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"output_data\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]},{\"label\":\"Extra Data\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":false,\"name\":\"extra_data\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
-    "pipeOutputParams" : "[{\"key\":\"output\",\"value\":\"#App:18914:output_data!String \",\"displayValue\":\"#App:18914:output_data!String \"}]"
+    "pipeOutputParams" : "[{\"key\":\"output\",\"value\":\"#App:20488:output_data!String \",\"displayValue\":\"#App:20488:output_data!String \"}]"
   } ],
   "exportablePipes" : [ {
     "definitionVersion" : "49ce1564bcdf748988c624a5659a0451",
@@ -1083,7 +1083,7 @@
       "pipeInputParams" : "[{\"label\":\"Array (as a string)\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"array\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
       "pipeOutputParams" : "[{\"key\":\"escapedArray\",\"value\":\"#App:19923:find_replace.output!String \",\"displayValue\":\"#App:19923:find_replace.output!String \"}]"
     } ],
-    "dateExported" : "6/29/18 2:34 PM"
+    "dateExported" : "6/29/18 3:42 PM"
   }, {
     "definitionVersion" : "aa82babdc0f9d92c7db3023d1faf74ec",
     "name" : "[utility] [iterator] Check Lock and Delay",
@@ -1379,7 +1379,7 @@
       "pipeInputParams" : "[{\"label\":\"Datastore ID\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"datastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
       "pipeOutputParams" : "[]"
     } ],
-    "dateExported" : "6/29/18 2:34 PM"
+    "dateExported" : "6/29/18 3:42 PM"
   } ],
-  "dateExported" : "6/29/18 2:34 PM"
+  "dateExported" : "6/29/18 3:42 PM"
 }

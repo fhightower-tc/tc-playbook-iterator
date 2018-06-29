@@ -2,12 +2,12 @@
   "definitionVersion" : "1.0.0",
   "name" : "[utility] [iterator] C2 - Iterate",
   "type" : "Pipe",
-  "panX" : 20.0,
-  "panY" : 20.0,
+  "panX" : -20.0,
+  "panY" : -87.0,
   "logLevel" : "WARN",
   "description" : "",
   "jobList" : [ {
-    "id" : 18635,
+    "id" : 20467,
     "appCatalogItem" : {
       "programName" : "DataStore",
       "displayName" : "DataStore",
@@ -31,14 +31,9 @@
       "value" : "Organization"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
+        "paramName" : "path"
       },
-      "value" : "{\n    \"inputData\": \"#App:20459:escapedArray!String\",\n\"outputData\": \"#App:20460:escapedArray!String\",\n    \"extraData\": \"#App:20461:escapedArray!String\",\n    \"counter\": #App:18664:newCount!String,\n    \"lock\": #App:18650:lock!String,\n    \"repeatTrigger\": \"#App:18650:repeatTrigger!String\"\n}"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "db_method"
-      },
-      "value" : "POST"
+      "value" : "#Trigger:2016:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "organization_name"
@@ -46,20 +41,25 @@
       "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "type_name"
+        "paramName" : "request_entity"
       },
-      "value" : "#App:18733:datastoreName!String"
+      "value" : "{\n    \"inputData\": \"#App:20479:escapedArray!String\",\n\"outputData\": \"#App:20480:escapedArray!String\",\n    \"extraData\": \"#App:20481:escapedArray!String\",\n    \"counter\": #App:20472:newCount!String,\n    \"lock\": #App:20469:lock!String,\n    \"repeatTrigger\": \"#App:20469:repeatTrigger!String\"\n}"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "path"
+        "paramName" : "db_method"
       },
-      "value" : "#Trigger:1871:componentDatastoreID!String"
+      "value" : "POST"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "type_name"
+      },
+      "value" : "#App:20476:datastoreName!String"
     } ],
     "locationLeft" : 470.0,
     "locationTop" : 610.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18639,
+    "id" : 20468,
     "appCatalogItem" : {
       "programName" : "DataStore",
       "displayName" : "DataStore",
@@ -78,24 +78,14 @@
     "publishPassword" : "dvyp049iHMsPr5vz",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "domain_type"
+        "paramName" : "type_name"
       },
-      "value" : "Organization"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "db_method"
-      },
-      "value" : "GET"
+      "value" : "#App:20476:datastoreName!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "path"
       },
-      "value" : "#Trigger:1871:componentDatastoreID!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
-      },
-      "value" : ""
+      "value" : "#Trigger:2016:componentDatastoreID!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "organization_name"
@@ -103,16 +93,26 @@
       "value" : "Research Labs"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "type_name"
+        "paramName" : "db_method"
       },
-      "value" : "#App:18733:datastoreName!String"
+      "value" : "GET"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "request_entity"
+      },
+      "value" : ""
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "domain_type"
+      },
+      "value" : "Organization"
     } ],
     "locationLeft" : 470.0,
     "locationTop" : 390.0,
     "outputVariables" : "[{\"name\":\"datastore.response\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18650,
+    "id" : 20469,
     "appCatalogItem" : {
       "programName" : "TCPB - JsonPath v1.0",
       "displayName" : "Json Path",
@@ -131,31 +131,31 @@
     "publishPassword" : "W0wql1KSYWOtLFuY",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "null_missing_leaf"
-      },
-      "value" : "false"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "column_mapping_as_string"
       },
       "value" : "[{\"key\":\"counter\",\"value\":\"_source[\\\"counter\\\"]\"},{\"key\":\"lock\",\"value\":\"_source[\\\"lock\\\"]\"},{\"key\":\"inputData\",\"value\":\"_source[\\\"inputData\\\"]\"},{\"key\":\"repeatTrigger\",\"value\":\"_source[\\\"repeatTrigger\\\"]\"},{\"key\":\"extraData\",\"value\":\"_source[\\\"extraData\\\"]\"}]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "json_content"
-      },
-      "value" : "#App:18639:datastore.response!String"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "column_mapping"
       },
       "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "json_content"
+      },
+      "value" : "#App:20468:datastore.response!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "null_missing_leaf"
+      },
+      "value" : "false"
     } ],
     "locationLeft" : 680.0,
     "locationTop" : 390.0,
-    "outputVariables" : "[{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"extraData\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"lock\",\"type\":\"String\"}]",
+    "outputVariables" : "[{\"name\":\"repeatTrigger\",\"type\":\"String\"},{\"name\":\"counter\",\"type\":\"String\"},{\"name\":\"inputData\",\"type\":\"String\"},{\"name\":\"extraData\",\"type\":\"String\"},{\"name\":\"lock\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18661,
+    "id" : 20470,
     "appCatalogItem" : {
       "programName" : "Encode URL",
       "displayName" : "Encode URL",
@@ -176,14 +176,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "input"
       },
-      "value" : "#App:18650:counter!String+1"
+      "value" : "#App:20469:counter!String+1"
     } ],
     "locationLeft" : 470.0,
     "locationTop" : 500.0,
     "outputVariables" : "[{\"name\":\"encode_url.output\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18662,
+    "id" : 20471,
     "appCatalogItem" : {
       "programName" : "TCPB - HTTP Client v2.0",
       "displayName" : "HTTP Client",
@@ -202,38 +202,18 @@
     "publishPassword" : "rtQ5GFEBYNpesEcy",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "advanced"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "verify_ssl"
-      },
-      "value" : "true"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "http_method"
-      },
-      "value" : "GET"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "multipart"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "headers"
       },
       "value" : "[]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "body"
-      }
+        "paramName" : "url"
+      },
+      "value" : "http://api.mathjs.org/v4/?expr=#App:20470:encode_url.output!String"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "proxies_enabled"
-      },
-      "value" : "false"
+        "paramName" : "body"
+      }
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "fail_on_error"
@@ -246,9 +226,29 @@
       "value" : "[]"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "url"
+        "paramName" : "verify_ssl"
       },
-      "value" : "http://api.mathjs.org/v4/?expr=#App:18661:encode_url.output!String"
+      "value" : "true"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "multipart"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "http_method"
+      },
+      "value" : "GET"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "advanced"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "proxies_enabled"
+      },
+      "value" : "false"
     } ],
     "locationLeft" : 680.0,
     "locationTop" : 500.0,
@@ -257,7 +257,7 @@
     "playbookRetryDelayMinutes" : 1,
     "playbookRetryMaxRetries" : 5
   }, {
-    "id" : 18664,
+    "id" : 20472,
     "appCatalogItem" : {
       "programName" : "TCPB - SetVariable v1.0",
       "displayName" : "Set Variable",
@@ -278,14 +278,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "variable_mapping"
       },
-      "value" : "[{\"key\":\"newCount\",\"value\":\"#App:18662:http.content!String\"}]"
+      "value" : "[{\"key\":\"newCount\",\"value\":\"#App:20471:http.content!String\"}]"
     } ],
     "locationLeft" : 890.0,
     "locationTop" : 500.0,
     "outputVariables" : "[{\"name\":\"newCount\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18669,
+    "id" : 20473,
     "appCatalogItem" : {
       "programName" : "TCPB - JsonPath v1.0",
       "displayName" : "Json Path",
@@ -304,31 +304,31 @@
     "publishPassword" : "xfiAUpp2v8JwlExz",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
+        "paramName" : "column_mapping_as_string"
+      },
+      "value" : "[{\"key\":\"nextInput\",\"value\":\"[#App:20472:newCount!String]\"}]"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "null_missing_leaf"
       },
       "value" : "false"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "json_content"
+      },
+      "value" : "#App:20469:inputData!String"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "column_mapping"
       },
       "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "column_mapping_as_string"
-      },
-      "value" : "[{\"key\":\"nextInput\",\"value\":\"[#App:18664:newCount!String]\"}]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "json_content"
-      },
-      "value" : "#App:18650:inputData!String"
     } ],
     "locationLeft" : 680.0,
     "locationTop" : 610.0,
     "outputVariables" : "[{\"name\":\"nextInput\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18670,
+    "id" : 20474,
     "appCatalogItem" : {
       "programName" : "TCPB - HTTP Client v2.0",
       "displayName" : "HTTP Client",
@@ -347,12 +347,12 @@
     "publishPassword" : "hxUpULzvYF0QWMiq",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "proxies_enabled"
+        "paramName" : "body"
       },
-      "value" : "false"
+      "value" : "#App:20473:nextInput!String"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "multipart"
+        "paramName" : "params"
       },
       "value" : "[]"
     }, {
@@ -362,29 +362,9 @@
       "value" : "true"
     }, {
       "appCatalogItemParameter" : {
-        "paramName" : "body"
+        "paramName" : "proxies_enabled"
       },
-      "value" : "#App:18669:nextInput!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "params"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "headers"
-      },
-      "value" : "[]"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "url"
-      },
-      "value" : "#App:18650:repeatTrigger!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "http_method"
-      },
-      "value" : "POST"
+      "value" : "false"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "verify_ssl"
@@ -392,9 +372,29 @@
       "value" : "true"
     }, {
       "appCatalogItemParameter" : {
+        "paramName" : "http_method"
+      },
+      "value" : "POST"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "multipart"
+      },
+      "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
         "paramName" : "advanced"
       },
       "value" : "[]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "headers"
+      },
+      "value" : "[{\"key\":\"iteratorDatastoreID\",\"value\":\"#Trigger:2016:componentDatastoreID!String\"}]"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "url"
+      },
+      "value" : "#App:20469:repeatTrigger!String"
     } ],
     "locationLeft" : 890.0,
     "locationTop" : 610.0,
@@ -402,7 +402,7 @@
     "playbookRetryDelayMinutes" : 1,
     "playbookRetryMaxRetries" : 5
   }, {
-    "id" : 18732,
+    "id" : 20475,
     "appCatalogItem" : {
       "programName" : "DataStore",
       "displayName" : "DataStore",
@@ -421,24 +421,9 @@
     "publishPassword" : "QhdVgIQYJo2nMYeK",
     "jobParameterList" : [ {
       "appCatalogItemParameter" : {
-        "paramName" : "path"
-      },
-      "value" : "#Trigger:1871:componentDatastoreID!String"
-    }, {
-      "appCatalogItemParameter" : {
         "paramName" : "type_name"
       },
-      "value" : "#App:18733:datastoreName!String"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "db_method"
-      },
-      "value" : "POST"
-    }, {
-      "appCatalogItemParameter" : {
-        "paramName" : "request_entity"
-      },
-      "value" : "{\n\"inputData\": \"#App:20459:escapedArray!String\",\n\"outputData\": \"#App:20460:escapedArray!String\",\n\"extraData\": \"#App:20461:escapedArray!String\",\n\"counter\": #App:18664:newCount!String ,\n\"lock\": false,\n\"repeatTrigger\": \"#App:18650:repeatTrigger!String\"\n}"
+      "value" : "#App:20476:datastoreName!String"
     }, {
       "appCatalogItemParameter" : {
         "paramName" : "organization_name"
@@ -449,12 +434,27 @@
         "paramName" : "domain_type"
       },
       "value" : "Organization"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "db_method"
+      },
+      "value" : "POST"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "path"
+      },
+      "value" : "#Trigger:2016:componentDatastoreID!String"
+    }, {
+      "appCatalogItemParameter" : {
+        "paramName" : "request_entity"
+      },
+      "value" : "{\n\"inputData\": \"#App:20479:escapedArray!String\",\n\"outputData\": \"#App:20480:escapedArray!String\",\n\"extraData\": \"#App:20481:escapedArray!String\",\n\"counter\": #App:20472:newCount!String ,\n\"lock\": false,\n\"repeatTrigger\": \"#App:20469:repeatTrigger!String\"\n}"
     } ],
     "locationLeft" : 890.0,
     "locationTop" : 700.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18733,
+    "id" : 20476,
     "appCatalogItem" : {
       "programName" : "TCPB - SetVariable v1.0",
       "displayName" : "Set Variable",
@@ -482,7 +482,7 @@
     "outputVariables" : "[{\"name\":\"datastoreName\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18739,
+    "id" : 20477,
     "appCatalogItem" : {
       "programName" : "Merge",
       "displayName" : "Merge",
@@ -503,13 +503,13 @@
       "appCatalogItemParameter" : {
         "paramName" : "output_array"
       },
-      "value" : "[{\"key\":\"message\",\"value\":\"#App:18741:message!String\"}]"
+      "value" : "[{\"key\":\"message\",\"value\":\"#App:20478:message!String\"}]"
     } ],
     "locationLeft" : 1340.0,
     "locationTop" : 650.0,
     "playbookRetryEnabled" : false
   }, {
-    "id" : 18741,
+    "id" : 20478,
     "appCatalogItem" : {
       "programName" : "TCPB - SetVariable v1.0",
       "displayName" : "Set Variable",
@@ -537,7 +537,7 @@
     "outputVariables" : "[{\"name\":\"message\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20459,
+    "id" : 20479,
     "appCatalogItem" : {
       "programName" : "49ce1564bcdf748988c624a5659a0451",
       "displayName" : "[utility] Escape Quotes for Datastore",
@@ -559,14 +559,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "array"
       },
-      "value" : "#App:18650:inputData!String"
+      "value" : "#App:20469:inputData!String"
     } ],
     "locationLeft" : 1170.0,
     "locationTop" : 230.0,
     "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20460,
+    "id" : 20480,
     "appCatalogItem" : {
       "programName" : "49ce1564bcdf748988c624a5659a0451",
       "displayName" : "[utility] Escape Quotes for Datastore",
@@ -588,14 +588,14 @@
       "appCatalogItemParameter" : {
         "paramName" : "array"
       },
-      "value" : "#Trigger:1871:outputData!String"
+      "value" : "#Trigger:2016:outputData!String"
     } ],
     "locationLeft" : 1170.0,
     "locationTop" : 310.0,
     "outputVariables" : "[{\"name\":\"escapedArray\",\"type\":\"String\"}]",
     "playbookRetryEnabled" : false
   }, {
-    "id" : 20461,
+    "id" : 20481,
     "appCatalogItem" : {
       "programName" : "49ce1564bcdf748988c624a5659a0451",
       "displayName" : "[utility] Escape Quotes for Datastore",
@@ -617,7 +617,7 @@
       "appCatalogItemParameter" : {
         "paramName" : "array"
       },
-      "value" : "#App:18650:extraData!String"
+      "value" : "#App:20469:extraData!String"
     } ],
     "locationLeft" : 1170.0,
     "locationTop" : 390.0,
@@ -627,91 +627,91 @@
   "playbookConnectionList" : [ {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18661,
-    "targetJobId" : 18662
+    "sourceJobId" : 20470,
+    "targetJobId" : 20471
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18662,
-    "targetJobId" : 18664
+    "sourceJobId" : 20471,
+    "targetJobId" : 20472
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18635,
-    "targetJobId" : 18669
+    "sourceJobId" : 20467,
+    "targetJobId" : 20473
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18669,
-    "targetJobId" : 18670
+    "sourceJobId" : 20473,
+    "targetJobId" : 20474
   }, {
     "type" : "Fail",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18669,
-    "targetJobId" : 18732
+    "sourceJobId" : 20473,
+    "targetJobId" : 20475
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "targetJobId" : 18733,
-    "sourceTriggerId" : 1871
+    "targetJobId" : 20476,
+    "sourceTriggerId" : 2016
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18650,
-    "targetJobId" : 18661
+    "sourceJobId" : 20469,
+    "targetJobId" : 20470
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18670,
-    "targetJobId" : 18739
+    "sourceJobId" : 20474,
+    "targetJobId" : 20477
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18732,
-    "targetJobId" : 18741
+    "sourceJobId" : 20475,
+    "targetJobId" : 20478
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18741,
-    "targetJobId" : 18739
+    "sourceJobId" : 20478,
+    "targetJobId" : 20477
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18639,
-    "targetJobId" : 18650
+    "sourceJobId" : 20468,
+    "targetJobId" : 20469
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18733,
-    "targetJobId" : 18639
+    "sourceJobId" : 20476,
+    "targetJobId" : 20468
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18733,
-    "targetJobId" : 18639
+    "sourceJobId" : 20476,
+    "targetJobId" : 20468
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 18664,
-    "targetJobId" : 20459
+    "sourceJobId" : 20472,
+    "targetJobId" : 20479
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20459,
-    "targetJobId" : 20460
+    "sourceJobId" : 20479,
+    "targetJobId" : 20480
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20460,
-    "targetJobId" : 20461
+    "sourceJobId" : 20480,
+    "targetJobId" : 20481
   }, {
     "type" : "Pass",
     "isCircularOnTarget" : false,
-    "sourceJobId" : 20461,
-    "targetJobId" : 18635
+    "sourceJobId" : 20481,
+    "targetJobId" : 20467
   } ],
   "playbookTriggerList" : [ {
-    "id" : 1871,
+    "id" : 2016,
     "name" : "Component Trigger",
     "type" : "PipeConfig",
     "eventType" : "External",
@@ -722,7 +722,7 @@
     "orFilters" : false,
     "fireOnDuplicate" : false,
     "renderBodyAsTip" : false,
-    "outputVariables" : "[{\"name\":\"componentDatastoreID\",\"type\":\"String\"},{\"name\":\"outputData\",\"type\":\"String\"}]",
+    "outputVariables" : "[{\"name\":\"outputData\",\"type\":\"String\"},{\"name\":\"componentDatastoreID\",\"type\":\"String\"}]",
     "pipeInputParams" : "[{\"label\":\"Output Data\",\"dataType\":\"String\",\"playbookDataType\":\"String,StringArray,TCEntityArray,TCEntity\",\"required\":false,\"name\":\"outputData\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\",\"${KEYCHAIN}\"]},{\"label\":\"Component Datastore ID\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"componentDatastoreID\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
     "pipeOutputParams" : "[]"
   } ],
@@ -810,7 +810,7 @@
       "pipeInputParams" : "[{\"label\":\"Array (as a string)\",\"dataType\":\"String\",\"playbookDataType\":\"String\",\"required\":true,\"name\":\"array\",\"encrypted\":false,\"hidden\":false,\"hasDollarVariables\":false,\"playbookVariable\":false,\"validValuesList\":[\"${TEXT}\"]}]",
       "pipeOutputParams" : "[{\"key\":\"escapedArray\",\"value\":\"#App:19923:find_replace.output!String \",\"displayValue\":\"#App:19923:find_replace.output!String \"}]"
     } ],
-    "dateExported" : "6/29/18 2:34 PM"
+    "dateExported" : "6/29/18 3:42 PM"
   } ],
-  "dateExported" : "6/29/18 2:34 PM"
+  "dateExported" : "6/29/18 3:42 PM"
 }
