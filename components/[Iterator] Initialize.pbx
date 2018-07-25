@@ -415,7 +415,7 @@
     "id" : 20584,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -443,7 +443,7 @@
     "id" : 20585,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -471,7 +471,7 @@
     "id" : 20586,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -499,7 +499,7 @@
     "id" : 20587,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -527,7 +527,7 @@
     "id" : 20588,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -555,7 +555,7 @@
     "id" : 20589,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -583,7 +583,7 @@
     "id" : 20590,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -611,7 +611,7 @@
     "id" : 20591,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -639,7 +639,7 @@
     "id" : 20592,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -667,7 +667,7 @@
     "id" : 20593,
     "appCatalogItem" : {
       "programName" : "aa82babdc0f9d92c7db3023d1faf74ec",
-      "displayName" : "[Iterator] [Internal] Check Lock and Delay",
+      "displayName" : "[utility] [iterator] Check Lock and Delay",
       "programVersion" : "1.0.0",
       "pipeRunLevel" : true
     },
@@ -1086,7 +1086,7 @@
     "dateExported" : "7/3/18 6:16 PM"
   }, {
     "definitionVersion" : "aa82babdc0f9d92c7db3023d1faf74ec",
-    "name" : "[Iterator] [Internal] Check Lock and Delay",
+    "name" : "[utility] [iterator] Check Lock and Delay",
     "type" : "Pipe",
     "panX" : 20.0,
     "panY" : 52.0,
