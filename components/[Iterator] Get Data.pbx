@@ -1,6 +1,6 @@
 {
   "definitionVersion" : "1.0.0",
-  "name" : "[Iterator] Get Data",
+  "name" : "[utility] [iterator] Get Data",
   "type" : "Pipe",
   "panX" : 20.0,
   "panY" : 20.0,

@@ -1,6 +1,6 @@
 {
   "definitionVersion" : "1.0.0",
-  "name" : "[Iterator] [Internal] Initialize",
+  "name" : "[utility] [iterator] Initialize",
   "type" : "Pipe",
   "panX" : 72.0,
   "panY" : 403.0,

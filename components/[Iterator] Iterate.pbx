@@ -1,6 +1,6 @@
 {
   "definitionVersion" : "1.0.0",
-  "name" : "[Iterator] Iterate",
+  "name" : "[utility] [iterator] Iterate",
   "type" : "Pipe",
   "panX" : -298.0,
   "panY" : -144.0,
